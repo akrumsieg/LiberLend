@@ -8,6 +8,7 @@ namespace LiberLend.Models.BookModels
 {
     public class BookListItem
     {
+        public int BookId { get; set; }
 
         public string Title { get; set; }
 

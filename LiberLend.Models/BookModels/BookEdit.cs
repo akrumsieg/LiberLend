@@ -9,6 +9,8 @@ namespace LiberLend.Models.BookModels
 {
     public class BookEdit
     {
+        public int BookId { get; set; }
+
         [MinLength(10, ErrorMessage = "Please enter a 10- or 13-digit ISBN")]
         [MaxLength(13, ErrorMessage = "Please enter a 10- or 13-digit ISBN")]
         public string ISBN { get; set; }

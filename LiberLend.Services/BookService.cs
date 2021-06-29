@@ -47,11 +47,31 @@ namespace LiberLend.Services
                 var query = ctx.Books.AsEnumerable().Where(b => b.ApplicationUserId == _userId)
                             .Select(b => new BookListItem
                             {
+                                BookId = b.BookId,
                                 Title = b.Title,
                                 Author = b.FullNameFL(),
                                 IsAvailable = b.IsAvailable
                             });
                 return query.ToArray();
+            }
+        }
+
+        public BookDetails GetBookById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Books.Single(b => b.BookId == id);
+                return new BookDetails
+                {
+                    BookId = entity.BookId,
+                    ISBN = entity.ISBN,
+                    Title = entity.Title,
+                    Author = entity.FullNameFL(),
+                    Publisher = entity.Publisher,
+                    Description = entity.Description,
+                    Edition = entity.Edition,
+                    Genre = entity.Genre
+                };
             }
         }
     }

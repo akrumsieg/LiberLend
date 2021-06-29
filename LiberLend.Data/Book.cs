@@ -37,7 +37,7 @@ namespace LiberLend.Data
 
         //virtual List<Reservation> Reservations { get; set; } = new List<Reservation>();
 
-        public string FullNameFL() => AuthorFirstName + AuthorLastName;
+        public string FullNameFL() => AuthorFirstName + " " + AuthorLastName;
 
         public string FullNameLF() => AuthorLastName + ", " + AuthorFirstName;
     }

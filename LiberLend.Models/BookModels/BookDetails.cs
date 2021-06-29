@@ -9,6 +9,8 @@ namespace LiberLend.Models.BookModels
 {
     public class BookDetails
     {
+        public int BookId { get; set; }
+
         public string ISBN { get; set; }
 
         public string Title { get; set; }

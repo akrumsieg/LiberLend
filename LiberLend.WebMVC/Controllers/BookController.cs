@@ -24,6 +24,13 @@ namespace LiberLend.WebMVC.Controllers
             return View(service.GetAllBooks());
         }
 
+        //GET: Details
+        public ActionResult Details(int id)
+        {
+            var service = CreateBookService();
+            return View(service.GetBookById(id));
+        }
+
         //GET: Create
         public ActionResult Create()
         {
