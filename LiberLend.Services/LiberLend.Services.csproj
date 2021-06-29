@@ -54,11 +54,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BookService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LiberLend.Data\LiberLend.Data.csproj">
+      <Project>{CC8D0098-9077-4B7D-BC56-9BAF0C3891B7}</Project>
+      <Name>LiberLend.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LiberLend.Models\LiberLend.Models.csproj">
+      <Project>{FC48B0B5-BEFC-4BB1-BD4C-4DD3F51C0FDC}</Project>
+      <Name>LiberLend.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
