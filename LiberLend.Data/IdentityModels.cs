@@ -32,7 +32,7 @@ namespace LiberLend.Data
             return new ApplicationDbContext();
         }
 
-        //public DbSet<Book> Books { get; set; }
+        public DbSet<Book> Books { get; set; }
         //public DbSet<Reservation> Reservations { get; set; }
         //public DbSet<Library> Libraries { get; set; }
         //public DbSet<Membership> Memberships { get; set; }
