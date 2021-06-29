@@ -44,7 +44,7 @@ namespace LiberLend.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var query = ctx.Books.Where(b => b.ApplicationUserId == _userId)
+                var query = ctx.Books.AsEnumerable().Where(b => b.ApplicationUserId == _userId)
                             .Select(b => new BookListItem
                             {
                                 Title = b.Title,

@@ -60,6 +60,14 @@
     <Compile Include="Migrations\202106291427427_InitialMigrationIncludesBook.Designer.cs">
       <DependentUpon>202106291427427_InitialMigrationIncludesBook.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106291939571_MakeIsbnNullable.cs" />
+    <Compile Include="Migrations\202106291939571_MakeIsbnNullable.Designer.cs">
+      <DependentUpon>202106291939571_MakeIsbnNullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106292211211_ChangeIsbnToString.cs" />
+    <Compile Include="Migrations\202106292211211_ChangeIsbnToString.Designer.cs">
+      <DependentUpon>202106292211211_ChangeIsbnToString.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -70,6 +78,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202106291427427_InitialMigrationIncludesBook.resx">
       <DependentUpon>202106291427427_InitialMigrationIncludesBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106291939571_MakeIsbnNullable.resx">
+      <DependentUpon>202106291939571_MakeIsbnNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106292211211_ChangeIsbnToString.resx">
+      <DependentUpon>202106292211211_ChangeIsbnToString.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

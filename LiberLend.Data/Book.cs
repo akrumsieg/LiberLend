@@ -17,7 +17,7 @@ namespace LiberLend.Data
         public string ApplicationUserId { get; set; }
         public virtual ApplicationUser ApplicationUser { get; set; }
 
-        public int ISBN { get; set; }
+        public string ISBN { get; set; }
 
         public string Title { get; set; }
 
