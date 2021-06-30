@@ -93,5 +93,27 @@ namespace LiberLend.WebMVC.Controllers
             ModelState.AddModelError("", "Your book could not be updated.");
             return View(model);
         }
+
+        //GET: Delete
+        public ActionResult Delete(int id)
+        {
+            var service = CreateBookService();
+            return View(service.GetBookById(id));
+        }
+
+        //POST: Delete
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePost(int id)
+        {
+            var service = CreateBookService();
+            if (service.DeleteBook(id))
+            {
+                TempData["SaveResult"] = "Your book was deleted.";
+                return RedirectToAction("Index");
+            }
+            TempData["SaveResult"] = "Your book could not be deleted.";
+            return RedirectToAction("Index");
+        }
     }
 }

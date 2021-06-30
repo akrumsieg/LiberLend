@@ -93,5 +93,15 @@ namespace LiberLend.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+
+        public bool DeleteBook(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Books.Single(b => /*b.ApplicationUserId == _userId &&*/ b.BookId == id);
+                ctx.Books.Remove(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }
