@@ -68,6 +68,10 @@
     <Compile Include="Migrations\202106292211211_ChangeIsbnToString.Designer.cs">
       <DependentUpon>202106292211211_ChangeIsbnToString.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106301511406_CustomizeApplicationUser.cs" />
+    <Compile Include="Migrations\202106301511406_CustomizeApplicationUser.Designer.cs">
+      <DependentUpon>202106301511406_CustomizeApplicationUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -84,6 +88,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106292211211_ChangeIsbnToString.resx">
       <DependentUpon>202106292211211_ChangeIsbnToString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106301511406_CustomizeApplicationUser.resx">
+      <DependentUpon>202106301511406_CustomizeApplicationUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

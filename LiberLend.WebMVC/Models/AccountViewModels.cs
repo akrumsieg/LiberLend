@@ -79,6 +79,33 @@ namespace LiberLend.WebMVC.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
+        [Required]
+        [Phone]
+        [Display(Name = "Phone")]
+        public string PhoneNumber { get; set; }
+
+        [Display(Name = "Street Address")]
+        public string StreetAddress { get; set; }
+
+        [Display(Name = "City")]
+        public string City { get; set; }
+
+        [MinLength(2, ErrorMessage = "Please enter 2-letter abbreviation.")]
+        [MaxLength(2, ErrorMessage = "Please enter 2-letter abbreviation.")]
+        [Display(Name = "State")]
+        public string State { get; set; }
+
+        [Display(Name = "Zip Code")]
+        public int? ZipCode { get; set; }
     }
 
     public class ResetPasswordViewModel
