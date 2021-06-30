@@ -61,7 +61,7 @@ namespace LiberLend.Services
                     Description = entity.Description,
                     CaretakerName = entity.ApplicationUser.FullNameFL(),
                     NumOfMembers = 1, // entity.Memberships.Count(),
-                    NumOfBooks = entity.Books.Count()
+                    NumOfBooks = 0 //entity. ???
                 };
             }
         }

@@ -26,7 +26,5 @@ namespace LiberLend.Data
         //public int NumOfBooks() { }
 
         //public virtual List<Membership> Memberships { get; set; } = new List<Membership>();
-
-        public virtual List<Book> Books { get; set; } = new List<Book>();
     }
 }
