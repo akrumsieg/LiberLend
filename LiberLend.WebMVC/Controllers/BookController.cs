@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace LiberLend.WebMVC.Controllers
 {
+    [Authorize]
     public class BookController : Controller
     {
         private BookService CreateBookService()
