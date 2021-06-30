@@ -58,6 +58,10 @@
     <Compile Include="BookModels\BookDetails.cs" />
     <Compile Include="BookModels\BookEdit.cs" />
     <Compile Include="BookModels\BookListItem.cs" />
+    <Compile Include="LibraryModels\LibraryCreate.cs" />
+    <Compile Include="LibraryModels\LibraryDetails.cs" />
+    <Compile Include="LibraryModels\LibraryEdit.cs" />
+    <Compile Include="LibraryModels\LibraryListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
