@@ -67,11 +67,30 @@ namespace LiberLend.Services
                     ISBN = entity.ISBN,
                     Title = entity.Title,
                     Author = entity.FullNameFL(),
+                    AuthorFirstName = entity.AuthorFirstName,
+                    AuthorLastName = entity.AuthorLastName,
                     Publisher = entity.Publisher,
                     Description = entity.Description,
                     Edition = entity.Edition,
                     Genre = entity.Genre
                 };
+            }
+        }
+
+        public bool EditBook(BookEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Books.Single(b => /*b.ApplicationUserId == _userId &&*/ b.BookId == model.BookId);
+                entity.ISBN = model.ISBN;
+                entity.Title = model.Title;
+                entity.AuthorFirstName = model.AuthorFirstName;
+                entity.AuthorLastName = model.AuthorLastName;
+                entity.Publisher = model.Publisher;
+                entity.Description = model.Description;
+                entity.Edition = model.Edition;
+                entity.Genre = model.Genre;
+                return ctx.SaveChanges() == 1;
             }
         }
     }

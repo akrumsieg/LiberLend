@@ -52,5 +52,46 @@ namespace LiberLend.WebMVC.Controllers
             ModelState.AddModelError("", "Your book could not be added.");
             return View(model);
         }
+
+        //GET: Edit
+        public ActionResult Edit(int id)
+        {
+            var service = CreateBookService();
+            var detail = service.GetBookById(id);
+            var model = new BookEdit
+            {
+                BookId = detail.BookId,
+                ISBN = detail.ISBN,
+                Title = detail.Title,
+                AuthorFirstName = detail.AuthorFirstName,
+                AuthorLastName = detail.AuthorLastName,
+                Publisher = detail.Publisher,
+                Description = detail.Description,
+                Edition = detail.Edition,
+                Genre = detail.Genre
+            };
+            return View(model);
+        }
+
+        //POST: Edit
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, BookEdit model)
+        {
+            if (!ModelState.IsValid) return View(model);
+            if(model.BookId != id)
+            {
+                ModelState.AddModelError("", "Id Mismatch");
+                return View(model);
+            }
+            var service = CreateBookService();
+            if (service.EditBook(model))
+            {
+                TempData["SaveResult"] = "Your book was updated.";
+                return RedirectToAction("Index");
+            }
+            ModelState.AddModelError("", "Your book could not be updated.");
+            return View(model);
+        }
     }
 }
