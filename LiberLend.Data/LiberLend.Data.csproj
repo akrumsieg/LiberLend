@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="Book.cs" />
     <Compile Include="IdentityModels.cs" />
+    <Compile Include="Library.cs" />
     <Compile Include="Migrations\202106291427427_InitialMigrationIncludesBook.cs" />
     <Compile Include="Migrations\202106291427427_InitialMigrationIncludesBook.Designer.cs">
       <DependentUpon>202106291427427_InitialMigrationIncludesBook.cs</DependentUpon>
