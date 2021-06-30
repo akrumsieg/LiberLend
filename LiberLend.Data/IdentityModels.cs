@@ -20,9 +20,11 @@ namespace LiberLend.Data
         public string State { get; set; }
         public int? ZipCode { get; set; }
         public virtual List<Book> Books { get; set; } = new List<Book>();
-        //public virtual List<Library> Libraries { get; set; } = new List<Library>();
+        public virtual List<Library> Libraries { get; set; } = new List<Library>();
         //public virtual List<Reservation> Reservations { get; set; } = new List<Reservation>();
         //public virtual List<Membership> Memberships { get; set; } = new List<Membership>();
+
+        public string FullNameFL() => FirstName + " " + LastName;
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

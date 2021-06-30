@@ -20,5 +20,9 @@ namespace LiberLend.Models.LibraryModels
 
         [Display(Name = "Library Caretaker")]
         public string CaretakerName { get; set; }
+
+        public int NumOfMembers { get; set; }
+
+        public int NumOfBooks { get; set; }
     }
 }
