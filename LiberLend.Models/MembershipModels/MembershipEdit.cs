@@ -10,8 +10,5 @@ namespace LiberLend.Models.MembershipModels
     public class MembershipEdit
     {
         public int MembershipId { get; set; }
-
-        [Display(Name = "Authorized Membership")]
-        public bool IsAuthorized { get; set; }
     }
 }
