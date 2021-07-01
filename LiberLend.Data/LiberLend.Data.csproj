@@ -78,6 +78,10 @@
     <Compile Include="Migrations\202106301711130_AddLibrary.Designer.cs">
       <DependentUpon>202106301711130_AddLibrary.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107010152234_AddMembership.cs" />
+    <Compile Include="Migrations\202107010152234_AddMembership.Designer.cs">
+      <DependentUpon>202107010152234_AddMembership.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -100,6 +104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106301711130_AddLibrary.resx">
       <DependentUpon>202106301711130_AddLibrary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107010152234_AddMembership.resx">
+      <DependentUpon>202107010152234_AddMembership.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -62,6 +62,10 @@
     <Compile Include="LibraryModels\LibraryDetails.cs" />
     <Compile Include="LibraryModels\LibraryEdit.cs" />
     <Compile Include="LibraryModels\LibraryListItem.cs" />
+    <Compile Include="MembershipModels\MembershipCreate.cs" />
+    <Compile Include="MembershipModels\MembershipDetails.cs" />
+    <Compile Include="MembershipModels\MembershipEdit.cs" />
+    <Compile Include="MembershipModels\MembershipListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
