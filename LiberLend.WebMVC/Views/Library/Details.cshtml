@@ -1,0 +1,62 @@
+﻿@model LiberLend.Models.LibraryModels.LibraryDetails
+@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Library Details</h2>
+
+<div>
+    <h4>Library Details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CaretakerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CaretakerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumOfMembers)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumOfMembers)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumOfBooks)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumOfBooks)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @if (Model.ApplicationUserId == User.Identity.GetUserId())
+        {
+            @Html.ActionLink("Edit | ", "Edit", new { id = Model.LibraryId });
+        }
+    @Html.ActionLink("Back to List", "Index")
+</p>
