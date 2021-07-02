@@ -51,7 +51,8 @@ namespace LiberLend.Services
                                 LibraryId = l.LibraryId,
                                 ApplicationUserId = l.ApplicationUserId,
                                 Name = l.Name,
-                                Description = l.Description
+                                Description = l.Description,
+                                MemberAppUserIdList = l.Memberships.Select(m => m.ApplicationUserId).ToList()
                             });
                 return query.ToArray();
             }
@@ -96,10 +97,22 @@ namespace LiberLend.Services
             using (var ctx = new ApplicationDbContext())
             {
                 var entity = ctx.Libraries.Single(l => l.LibraryId == id);
+                var membership = new Membership();
+                try
+                {
+                    membership = ctx.Memberships.Single(m => m.ApplicationUserId == _userId && m.LibraryId == id);
+                }
+                catch
+                {
+                    membership.MembershipId = 0;
+                }
                 return new LibraryDetails
                 {
                     LibraryId = entity.LibraryId,
                     ApplicationUserId = entity.ApplicationUserId,
+                    //If the current user is a member of the library, the appropriate MembershipId will be assigned.
+                    //If the current user is not a member, a value of 0 will be assigned.
+                    MembershipId = membership.MembershipId,
                     Name = entity.Name,
                     Description = entity.Description,
                     CaretakerName = entity.ApplicationUser.FullNameFL(),

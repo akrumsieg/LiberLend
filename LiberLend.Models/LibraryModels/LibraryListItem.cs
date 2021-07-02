@@ -17,5 +17,7 @@ namespace LiberLend.Models.LibraryModels
         public string Name { get; set; }
 
         public string Description { get; set; }
+
+        public List<string> MemberAppUserIdList { get; set; }
     }
 }

@@ -13,6 +13,10 @@ namespace LiberLend.Models.LibraryModels
 
         public string ApplicationUserId { get; set; }
 
+        //If the current user is a member of the library, the appropriate MembershipId will be assigned.
+        //If the current user is not a member, a value of 0 will be assigned.
+        public int MembershipId { get; set; }
+
         [Display(Name = "Library Name")]
         public string Name { get; set; }
 

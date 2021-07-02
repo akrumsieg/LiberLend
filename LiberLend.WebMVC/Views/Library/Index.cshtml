@@ -8,7 +8,8 @@
     <h2>Index</h2>
 
     <p>
-        @Html.ActionLink("Create New Community Library", "Create")
+        @Html.ActionLink("Create a community library", "Create") |
+        @Html.ActionLink("Find other community Libraries", "BrowseIndex")
     </p>
     <table class="table">
         <tr>
@@ -31,21 +32,26 @@
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
                 <td>
-                     @if (item.ApplicationUserId == User.Identity.GetUserId())
-                        {
-                            @Html.ActionLink("Edit | ", "Edit", new { id = item.LibraryId });
-                            @Html.ActionLink("Details | ", "Details", new { id = item.LibraryId });
-                            @Html.ActionLink("Delete | ", "Delete", new { id = item.LibraryId });
-                            @Html.ActionLink("View Books | ", "x", new { id = item.LibraryId });
-                            @Html.ActionLink("View Members", "x", new { id = item.LibraryId });
-                        }
-                        else
-                        {
-                            @Html.ActionLink("Details | ", "Details", new { id = item.LibraryId });
-                            @Html.ActionLink("View Books | ", "x", new { id = item.LibraryId });
-                            @Html.ActionLink("View Members | ", "x", new { id = item.LibraryId });
-                            @Html.ActionLink("Cancel Membership", "Delete", new { id = item.LibraryId });
-                        }
+                    @if (item.ApplicationUserId == User.Identity.GetUserId())
+                    {
+                        @Html.ActionLink("Edit", "Edit", new { id = item.LibraryId });
+                        <text> | </text>
+                        @Html.ActionLink("Details", "Details", new { id = item.LibraryId });
+                        <text> | </text>
+                        @Html.ActionLink("Delete", "Delete", new { id = item.LibraryId });
+                        <text> | </text>
+                        @Html.ActionLink("View Books", "x", new { id = item.LibraryId });
+                        <text> | </text>
+                        @Html.ActionLink("View Members", "x", new { id = item.LibraryId });
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Details", "Details", new { id = item.LibraryId });
+                        <text> | </text>
+                        @Html.ActionLink("View Books", "x", new { id = item.LibraryId });
+                        <text> | </text>
+                        @Html.ActionLink("View Members", "x", new { id = item.LibraryId });
+                    }
                 </td>
             </tr>
         }

@@ -55,8 +55,33 @@
 </div>
 <p>
     @if (Model.ApplicationUserId == User.Identity.GetUserId())
-        {
-            @Html.ActionLink("Edit | ", "Edit", new { id = Model.LibraryId });
-        }
-    @Html.ActionLink("Back to List", "Index")
+    {
+        @Html.ActionLink("Edit", "Edit", new { id = Model.LibraryId });
+        <text> | </text>
+        @Html.ActionLink("Delete", "Delete", new { id = Model.LibraryId });
+        <text> | </text>
+        @Html.ActionLink("View Members", "x", new { id = Model.LibraryId });
+        <text> | </text>
+        @Html.ActionLink("View Books", "x", new { id = Model.LibraryId });
+        <text> | </text>
+        @Html.ActionLink("Back to List", "Index")
+    }
+    else if (Model.MembershipId != 0)
+    {
+        @Html.ActionLink("View Members", "x", new { id = Model.LibraryId });
+        <text> | </text>
+        @Html.ActionLink("View Books", "x", new { id = Model.LibraryId });
+        <text> | </text>
+        @Html.ActionLink("Cancel Membership", "../Membership/Delete", new { id = Model.MembershipId });
+        <text> | </text>
+        @Html.ActionLink("Back to List", "Index")
+    }
+    else
+    {
+        @Html.ActionLink("View Members", "x", new { id = Model.LibraryId });
+        <text> | </text>
+        @Html.ActionLink("View Books", "x", new { id = Model.LibraryId });
+        <text> | </text>
+        @Html.ActionLink("Back to List", "Index")
+    }
 </p>

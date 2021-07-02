@@ -23,11 +23,18 @@ namespace LiberLend.WebMVC.Controllers
             return User.Identity.GetUserId();
         }
 
-        // GET: Library
+        // GET: Library where user is member
         public ActionResult Index()
         {
             var service = CreateLibraryService();
             return View(service.GetMemberLibraries());
+        }
+
+        // GET: ALL Libraries
+        public ActionResult BrowseIndex()
+        {
+            var service = CreateLibraryService();
+            return View(service.GetAllLibraries());
         }
 
         //GET: Details

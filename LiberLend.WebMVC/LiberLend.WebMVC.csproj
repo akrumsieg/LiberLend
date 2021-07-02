@@ -247,6 +247,7 @@
     <Content Include="Views\Library\Create.cshtml" />
     <Content Include="Views\Library\Edit.cshtml" />
     <Content Include="Views\Library\Delete.cshtml" />
+    <Content Include="Views\Library\BrowseIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
