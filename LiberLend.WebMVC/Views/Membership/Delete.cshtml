@@ -1,0 +1,48 @@
+﻿@model LiberLend.Models.MembershipModels.MembershipDetails
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Cancel Membership</h2>
+
+<h3>Are you sure you want to cancel this membership?</h3>
+<div>
+    <h4>Membership Details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LibraryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LibraryName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApplicationUserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplicationUserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsAuthorized)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsAuthorized)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "../Library/Index")
+        </div>
+    }
+</div>

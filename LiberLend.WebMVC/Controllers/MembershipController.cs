@@ -86,7 +86,7 @@ namespace LiberLend.WebMVC.Controllers
             if (service.EditMembership(model))
             {
                 TempData["SaveResult"] = "Update successful!";
-                return RedirectToAction("Index");
+                return RedirectToAction("../Library/Index");
             }
             ModelState.AddModelError("", "Update failed.");
             return View(model);
@@ -109,10 +109,10 @@ namespace LiberLend.WebMVC.Controllers
             if (service.DeleteMembership(id))
             {
                 TempData["SaveResult"] = "This membership was deleted.";
-                return RedirectToAction("Index");
+                return RedirectToAction("../Library/Index");
             }
             TempData["SaveResult"] = "Delete failed.";
-            return RedirectToAction("Index");
+            return RedirectToAction("../Library/Index");
         }
     }
 }
