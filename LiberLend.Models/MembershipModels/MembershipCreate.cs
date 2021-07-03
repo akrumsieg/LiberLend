@@ -11,11 +11,5 @@ namespace LiberLend.Models.MembershipModels
     {
         [Required]
         public int LibraryId { get; set; }
-
-        [Required]
-        public string ApplicationUserId { get; set; }
-
-        [Required]
-        public bool IsAuthorized { get; set; }
     }
 }

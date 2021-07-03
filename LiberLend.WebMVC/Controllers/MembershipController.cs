@@ -33,9 +33,13 @@ namespace LiberLend.WebMVC.Controllers
         }
 
         //GET: Create
-        public ActionResult Create()
+        public ActionResult Create(int id)
         {
-            return View();
+            var model = new MembershipCreate
+            {
+                LibraryId = id,
+            };
+            return View(model);
         }
 
         //POST: Create
@@ -48,7 +52,7 @@ namespace LiberLend.WebMVC.Controllers
             if (service.CreateMembership(model))
             {
                 TempData["SaveResult"] = "Membership was successfully created!";
-                return RedirectToAction("Index");
+                return RedirectToAction("../Library/Index");
             }
             ModelState.AddModelError("", "Membership could not be created.");
             return View(model);

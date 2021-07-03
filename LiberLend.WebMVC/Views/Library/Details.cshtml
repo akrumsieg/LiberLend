@@ -82,6 +82,8 @@
         <text> | </text>
         @Html.ActionLink("View Books", "x", new { id = Model.LibraryId });
         <text> | </text>
+        @Html.ActionLink("Join", "../Membership/Create", new { id = Model.LibraryId });
+        <text> | </text>
         @Html.ActionLink("Back to List", "Index")
     }
 </p>
