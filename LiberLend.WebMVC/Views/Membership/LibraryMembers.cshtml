@@ -1,0 +1,33 @@
+﻿@model IEnumerable<LiberLend.Models.MembershipModels.MembershipListItem>
+
+@{
+    ViewBag.Title = "LibraryMembers";
+}
+
+<h2>Members of Library</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ApplicationUserName)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.IsAuthorized)
+        </th>*@
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplicationUserName)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.IsAuthorized)
+            </td>*@
+        </tr>
+    }
+    @Html.ActionLink("Back to Libraries", "../Library/Index", new { /* id=item.PrimaryKey */ })
+
+</table>

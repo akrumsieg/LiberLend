@@ -250,6 +250,7 @@
     <Content Include="Views\Library\BrowseIndex.cshtml" />
     <Content Include="Views\Membership\Create.cshtml" />
     <Content Include="Views\Membership\Delete.cshtml" />
+    <Content Include="Views\Membership\LibraryMembers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

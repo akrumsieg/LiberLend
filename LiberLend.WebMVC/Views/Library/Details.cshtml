@@ -60,7 +60,7 @@
         <text> | </text>
         @Html.ActionLink("Delete", "Delete", new { id = Model.LibraryId });
         <text> | </text>
-        @Html.ActionLink("View Members", "x", new { id = Model.LibraryId });
+        @Html.ActionLink("View Members", "../Membership/LibraryMembers", new { id = Model.LibraryId });
         <text> | </text>
         @Html.ActionLink("View Books", "x", new { id = Model.LibraryId });
         <text> | </text>
@@ -68,7 +68,7 @@
     }
     else if (Model.MembershipId != 0)
     {
-        @Html.ActionLink("View Members", "x", new { id = Model.LibraryId });
+        @Html.ActionLink("View Members", "../Membership/LibraryMembers", new { id = Model.LibraryId });
         <text> | </text>
         @Html.ActionLink("View Books", "x", new { id = Model.LibraryId });
         <text> | </text>
@@ -78,7 +78,7 @@
     }
     else
     {
-        @Html.ActionLink("View Members", "x", new { id = Model.LibraryId });
+        @Html.ActionLink("View Members", "../Membership/LibraryMembers", new { id = Model.LibraryId });
         <text> | </text>
         @Html.ActionLink("View Books", "x", new { id = Model.LibraryId });
         <text> | </text>

@@ -47,6 +47,21 @@ namespace LiberLend.Services
             }
         }
 
+        public IEnumerable<MembershipListItem> GetMembershipsByLibraryId(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query = ctx.Memberships.AsEnumerable().Where(m => m.LibraryId == id)
+                                .Select(m => new MembershipListItem
+                                {
+                                    MembershipId = m.MembershipId,
+                                    ApplicationUserName = m.ApplicationUser.FullNameFL(),
+                                    IsAuthorized = m.IsAuthorized
+                                });
+                return query.ToArray();
+            }
+        }
+
         public MembershipDetails GetMembershipById(int id)
         {
             using (var ctx = new ApplicationDbContext())

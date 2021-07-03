@@ -51,7 +51,7 @@
                     <text> | </text>
                     @Html.ActionLink("View Books", "x", new { id = item.LibraryId });
                     <text> | </text>
-                    @Html.ActionLink("View Members", "x", new { id = item.LibraryId });
+                    @Html.ActionLink("View Members", "../Membership/LibraryMembers", new { id = item.LibraryId });
                 }
                 else
                 {
@@ -59,7 +59,7 @@
                     <text> | </text>
                     @Html.ActionLink("View Books", "x", new { id = item.LibraryId });
                     <text> | </text>
-                    @Html.ActionLink("View Members", "x", new { id = item.LibraryId });
+                    @Html.ActionLink("View Members", "../Membership/LibraryMembers", new { id = item.LibraryId });
                 }
             </td>
         </tr>
