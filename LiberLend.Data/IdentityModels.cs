@@ -21,7 +21,7 @@ namespace LiberLend.Data
         public int? ZipCode { get; set; }
         public virtual List<Book> Books { get; set; } = new List<Book>();
         public virtual List<Library> Libraries { get; set; } = new List<Library>();
-        //public virtual List<Reservation> Reservations { get; set; } = new List<Reservation>();
+        public virtual List<Reservation> Reservations { get; set; } = new List<Reservation>();
         public virtual List<Membership> Memberships { get; set; } = new List<Membership>();
 
         public string FullNameFL() => FirstName + " " + LastName;
@@ -48,7 +48,7 @@ namespace LiberLend.Data
         }
 
         public DbSet<Book> Books { get; set; }
-        //public DbSet<Reservation> Reservations { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
         public DbSet<Library> Libraries { get; set; }
         public DbSet<Membership> Memberships { get; set; }
 
