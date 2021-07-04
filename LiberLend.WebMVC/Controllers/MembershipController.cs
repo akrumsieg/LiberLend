@@ -39,6 +39,13 @@ namespace LiberLend.WebMVC.Controllers
             return View(service.GetMembershipsByLibraryId(id));
         }
 
+        //GET: Book list by library id
+        public ActionResult LibraryBooks(int id)
+        {
+            var service = CreateMembershipService();
+            return View(service.GetBooksByLibraryId(id));
+        }
+
         //GET: Create
         public ActionResult Create(int id)
         {

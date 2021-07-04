@@ -49,7 +49,7 @@
                     <text> | </text>
                     @Html.ActionLink("Delete", "Delete", new { id = item.LibraryId });
                     <text> | </text>
-                    @Html.ActionLink("View Books", "x", new { id = item.LibraryId });
+                    @Html.ActionLink("View Books", "../Membership/LibraryBooks", new { id = item.LibraryId });
                     <text> | </text>
                     @Html.ActionLink("View Members", "../Membership/LibraryMembers", new { id = item.LibraryId });
                 }
@@ -57,7 +57,7 @@
                 {
                     @Html.ActionLink("Details", "Details", new { id = item.LibraryId });
                     <text> | </text>
-                    @Html.ActionLink("View Books", "x", new { id = item.LibraryId });
+                    @Html.ActionLink("View Books", "../Membership/LibraryBooks", new { id = item.LibraryId });
                     <text> | </text>
                     @Html.ActionLink("View Members", "../Membership/LibraryMembers", new { id = item.LibraryId });
                 }

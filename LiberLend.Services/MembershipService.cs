@@ -1,4 +1,5 @@
 ﻿using LiberLend.Data;
+using LiberLend.Models.BookModels;
 using LiberLend.Models.MembershipModels;
 using System;
 using System.Collections.Generic;
@@ -59,6 +60,34 @@ namespace LiberLend.Services
                                     IsAuthorized = m.IsAuthorized
                                 });
                 return query.ToArray();
+            }
+        }
+
+        public IEnumerable<BookListItem> GetBooksByLibraryId(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query = ctx.Memberships.AsEnumerable()
+                            .Where(m => m.LibraryId == id)
+                            .Select(m => m.ApplicationUser.Books)
+                            .ToList();
+
+                List<BookListItem> books = new List<BookListItem>();
+                foreach (var bookList in query)
+                {
+                    foreach (var book in bookList)
+                    {
+                        var bli = new BookListItem
+                        {
+                            BookId = book.BookId,
+                            Title = book.Title,
+                            Author = book.FullNameLF(),
+                            IsAvailable = book.IsAvailable
+                        };
+                        books.Add(bli);
+                    }
+                }
+                return books.OrderBy(b => b.Author);
             }
         }
 
