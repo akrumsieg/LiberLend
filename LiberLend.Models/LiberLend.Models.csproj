@@ -67,6 +67,10 @@
     <Compile Include="MembershipModels\MembershipEdit.cs" />
     <Compile Include="MembershipModels\MembershipListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReservationModels\ReservationCreate.cs" />
+    <Compile Include="ReservationModels\ReservationDetails.cs" />
+    <Compile Include="ReservationModels\ReservationEdit.cs" />
+    <Compile Include="ReservationModels\ReservationListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
