@@ -49,7 +49,7 @@ namespace LiberLend.Services
                             {
                                 BookId = b.BookId,
                                 Title = b.Title,
-                                Author = b.FullNameFL(),
+                                Author = b.AuthorFullNameFL(),
                                 IsAvailable = b.IsAvailable
                             });
                 return query.ToArray();
@@ -66,7 +66,7 @@ namespace LiberLend.Services
                     BookId = entity.BookId,
                     ISBN = entity.ISBN,
                     Title = entity.Title,
-                    Author = entity.FullNameFL(),
+                    Author = entity.AuthorFullNameFL(),
                     AuthorFirstName = entity.AuthorFirstName,
                     AuthorLastName = entity.AuthorLastName,
                     Publisher = entity.Publisher,

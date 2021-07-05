@@ -81,7 +81,7 @@ namespace LiberLend.Services
                         {
                             BookId = book.BookId,
                             Title = book.Title,
-                            Author = book.FullNameLF(),
+                            Author = book.AuthorFullNameLF(),
                             IsAvailable = book.IsAvailable
                         };
                         books.Add(bli);

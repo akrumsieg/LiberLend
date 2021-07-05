@@ -9,6 +9,8 @@ namespace LiberLend.Models.ReservationModels
 {
     public class ReservationEdit
     {
+        public int ReservationId { get; set; }
+
         [Required]
         [Display(Name = "Reservation Start")]
         [DataType(DataType.Date)]
