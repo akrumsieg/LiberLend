@@ -48,7 +48,7 @@ namespace LiberLend.Services
                         BorrowerName = r.ApplicationUser.FullNameFL(),
                         BookTitle = r.Book.Title,
                         BookAuthor = r.Book.AuthorFullNameFL(),
-                        ReservationPeriod = r.StartTime.ToString() + " - " + r.EndTime.ToString()
+                        ReservationPeriod = r.StartTime.ToString("d") + " - " + r.EndTime.ToString("d")
                     });
                 }
                 return reservations.OrderBy(r => r.ReservationPeriod);
@@ -79,7 +79,7 @@ namespace LiberLend.Services
                                 BorrowerName = r.ApplicationUser.FullNameFL(),
                                 BookTitle = r.Book.Title,
                                 BookAuthor = r.Book.AuthorFullNameFL(),
-                                ReservationPeriod = r.StartTime.ToString() + " - " + r.EndTime.ToString()
+                                ReservationPeriod = r.StartTime.ToString("d") + " - " + r.EndTime.ToString("d")
                             });
                 return query.OrderBy(r => r.ReservationPeriod).ToArray();
             }
