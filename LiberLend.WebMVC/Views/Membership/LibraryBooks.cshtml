@@ -32,7 +32,7 @@
             @Html.DisplayFor(modelItem => item.IsAvailable)
         </td>
         <td>
-            @Html.ActionLink("Reserve", "x", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Reserve", "../Reservation/Create", new { id=item.BookId }) |
             @Html.ActionLink("Details", "../Book/Details", new { id = item.BookId})
         </td>
     </tr>

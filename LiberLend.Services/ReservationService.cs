@@ -120,6 +120,7 @@ namespace LiberLend.Services
             }
         }
 
+        //only the borrower will be able to delete their reservation
         public bool DeleteReservation(int id)
         {
             using (var ctx = new ApplicationDbContext())

@@ -1,0 +1,120 @@
+﻿@model LiberLend.Models.ReservationModels.ReservationDetails
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Cancel Reservation</h2>
+
+<h3>Are you sure you want to cancel this reservation?</h3>
+<div>
+    <h4>Reservation Details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.HiddenFor(model => model.ReservationId)
+        </dt>
+
+        <dd>
+            @Html.HiddenFor(model => model.ReservationId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OwnerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OwnerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OwnerEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OwnerEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OwnerPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OwnerPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BorrowerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BorrowerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BorrowerEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BorrowerEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BorrowerPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BorrowerPhone)
+        </dd>
+
+        <dt>
+            @Html.HiddenFor(model => model.BookId)
+        </dt>
+
+        <dd>
+            @Html.HiddenFor(model => model.BookId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ISBN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ISBN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BookTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BookTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BookAuthor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BookAuthor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReservationPeriod)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReservationPeriod)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "IndexAsBorrower")
+        </div>
+    }
+</div>
