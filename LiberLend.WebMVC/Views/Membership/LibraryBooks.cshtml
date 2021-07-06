@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<LiberLend.Models.BookModels.BookListItem>
+@using Microsoft.AspNet.Identity
 
 @{
     ViewBag.Title = "LibraryBooks";
@@ -20,22 +21,35 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Author)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsAvailable)
-        </td>
-        <td>
-            @Html.ActionLink("Reserve", "../Reservation/Create", new { id=item.BookId }) |
-            @Html.ActionLink("Details", "../Book/Details", new { id = item.BookId})
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.HiddenFor(modelItem => item.ApplicationUserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsAvailable)
+            </td>
+            <td>
+                @if (item.ApplicationUserId == User.Identity.GetUserId())
+                {
+                    <text> My Book | </text>
+                    @Html.ActionLink("Details", "../Book/Details", new { id = item.BookId })
+                }
+                else
+                {
+                    @Html.ActionLink("Reserve", "../Reservation/Create", new { id = item.BookId });
+                    <text> | </text>
+                    @Html.ActionLink("Details", "../Book/Details", new { id = item.BookId })
+                }
+            </td>
+        </tr>
+    }
 
 </table>

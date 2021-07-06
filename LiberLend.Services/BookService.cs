@@ -48,6 +48,7 @@ namespace LiberLend.Services
                             .Select(b => new BookListItem
                             {
                                 BookId = b.BookId,
+                                ApplicationUserId = b.ApplicationUserId,
                                 Title = b.Title,
                                 Author = b.AuthorFullNameFL(),
                                 IsAvailable = b.IsAvailable
@@ -64,6 +65,7 @@ namespace LiberLend.Services
                 return new BookDetails
                 {
                     BookId = entity.BookId,
+                    ApplicationUserId = entity.ApplicationUserId,
                     ISBN = entity.ISBN,
                     Title = entity.Title,
                     Author = entity.AuthorFullNameFL(),

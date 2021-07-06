@@ -11,6 +11,8 @@ namespace LiberLend.Models.BookModels
     {
         public int BookId { get; set; }
 
+        public string ApplicationUserId { get; set; }
+
         public string ISBN { get; set; }
 
         public string Title { get; set; }

@@ -80,6 +80,7 @@ namespace LiberLend.Services
                         var bli = new BookListItem
                         {
                             BookId = book.BookId,
+                            ApplicationUserId = book.ApplicationUserId,
                             Title = book.Title,
                             Author = book.AuthorFullNameLF(),
                             IsAvailable = book.IsAvailable

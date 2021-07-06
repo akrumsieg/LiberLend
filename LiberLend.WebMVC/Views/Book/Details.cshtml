@@ -1,13 +1,14 @@
 ﻿@model LiberLend.Models.BookModels.BookDetails
+@using Microsoft.AspNet.Identity
 
 @{
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Book Details</h2>
 
 <div>
-    <h4>BookDetails</h4>
+    <h4>Book Details</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -69,7 +70,18 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.BookId }) |
-    @Html.ActionLink("Delete", "Delete", new { id = Model.BookId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @if (Model.ApplicationUserId == User.Identity.GetUserId())
+    {
+        @Html.ActionLink("Edit", "Edit", new { id = Model.BookId });
+        <text> | </text>
+        @Html.ActionLink("Delete", "Delete", new { id = Model.BookId });
+        <text> | </text>
+        <a href="#" onclick="history.go(-1);">Back</a>
+    }
+    else
+    {
+        @Html.ActionLink("Reserve", "../Reservation/Create", new { id = Model.BookId });
+        <text> | </text>
+    <a href="#" onclick="history.go(-1);">Back</a>
+    }
 </p>
