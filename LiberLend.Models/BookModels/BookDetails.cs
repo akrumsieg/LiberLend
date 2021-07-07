@@ -32,5 +32,7 @@ namespace LiberLend.Models.BookModels
         public string Edition { get; set; }
 
         public string Genre { get; set; }
+
+        public bool IsAvailable { get; set; }
     }
 }

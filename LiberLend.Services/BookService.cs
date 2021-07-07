@@ -29,8 +29,7 @@ namespace LiberLend.Services
                 Publisher = model.Publisher,
                 Description = model.Description,
                 Edition = model.Edition,
-                Genre = model.Genre,
-                IsAvailable = true
+                Genre = model.Genre
             };
 
             using (var ctx = new ApplicationDbContext())
@@ -85,7 +84,8 @@ namespace LiberLend.Services
                     Publisher = entity.Publisher,
                     Description = entity.Description,
                     Edition = entity.Edition,
-                    Genre = entity.Genre
+                    Genre = entity.Genre,
+                    IsAvailable = entity.IsAvailable
                 };
             }
         }

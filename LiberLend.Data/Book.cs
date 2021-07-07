@@ -33,7 +33,20 @@ namespace LiberLend.Data
 
         public string Genre { get; set; }
 
-        public bool IsAvailable { get; set; }
+        public bool IsAvailable
+        {
+            get
+            {
+                foreach (Reservation r in Reservations)
+                {
+                    if (r.StartTime <= DateTime.Today && DateTime.Today <= r.EndTime)
+                    {
+                        return false;
+                    }
+                }
+                return true;
+            }
+        }
 
         public virtual List<Reservation> Reservations { get; set; } = new List<Reservation>();
 
