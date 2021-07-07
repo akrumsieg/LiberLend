@@ -67,7 +67,7 @@ namespace LiberLend.Services
                     var members = ctx.Libraries.AsEnumerable().Single(l => l.LibraryId == libraryId).Memberships.Select(m => m.ApplicationUserId);
                     userIsMember = members.Contains(_userId);
                 }
-                catch (Exception ex)
+                catch
                 {
                     userIsMember = false;
                 }
