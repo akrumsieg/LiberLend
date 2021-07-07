@@ -10,6 +10,10 @@ namespace LiberLend.Models.BookModels
     {
         public int BookId { get; set; }
 
+        public int? LibraryId { get; set; }
+
+        public bool UserIsMember { get; set; }
+
         public string ApplicationUserId { get; set; }
 
         public string Title { get; set; }

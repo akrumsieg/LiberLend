@@ -39,10 +39,14 @@
                     <text> My Book | </text>
                     @Html.ActionLink("Details", "../Book/Details", new { id = item.BookId })
                 }
-                else
+                else if (item.UserIsMember)
                 {
                     @Html.ActionLink("Reserve", "../Reservation/Create", new { id = item.BookId });
                     <text> | </text>
+                    @Html.ActionLink("Details", "../Book/Details", new { id = item.BookId, LibraryId = item.LibraryId })
+                }
+                else
+                {
                     @Html.ActionLink("Details", "../Book/Details", new { id = item.BookId })
                 }
             </td>

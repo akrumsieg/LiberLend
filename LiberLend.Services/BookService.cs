@@ -57,15 +57,26 @@ namespace LiberLend.Services
             }
         }
 
-        public BookDetails GetBookById(int id)
+        public BookDetails GetBookById(int id, int? libraryId)
         {
             using (var ctx = new ApplicationDbContext())
             {
+                bool userIsMember;
+                try
+                {
+                    var members = ctx.Libraries.AsEnumerable().Single(l => l.LibraryId == libraryId).Memberships.Select(m => m.ApplicationUserId);
+                    userIsMember = members.Contains(_userId);
+                }
+                catch (Exception ex)
+                {
+                    userIsMember = false;
+                }
                 var entity = ctx.Books.Single(b => b.BookId == id);
                 return new BookDetails
                 {
                     BookId = entity.BookId,
                     ApplicationUserId = entity.ApplicationUserId,
+                    UserIsMember = userIsMember,
                     ISBN = entity.ISBN,
                     Title = entity.Title,
                     Author = entity.AuthorFullNameFL(),

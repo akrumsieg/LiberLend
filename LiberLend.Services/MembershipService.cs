@@ -71,7 +71,8 @@ namespace LiberLend.Services
                             .Where(m => m.LibraryId == id)
                             .Select(m => m.ApplicationUser.Books)
                             .ToList();
-
+                var members = ctx.Libraries.AsEnumerable().Single(l => l.LibraryId == id).Memberships.Select(m => m.ApplicationUserId);
+                bool userIsMember = members.Contains(_userId);
                 List<BookListItem> books = new List<BookListItem>();
                 foreach (var bookList in query)
                 {
@@ -81,6 +82,8 @@ namespace LiberLend.Services
                         {
                             BookId = book.BookId,
                             ApplicationUserId = book.ApplicationUserId,
+                            LibraryId = id,
+                            UserIsMember = userIsMember,
                             Title = book.Title,
                             Author = book.AuthorFullNameLF(),
                             IsAvailable = book.IsAvailable

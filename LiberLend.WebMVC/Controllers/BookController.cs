@@ -26,10 +26,10 @@ namespace LiberLend.WebMVC.Controllers
         }
 
         //GET: Details
-        public ActionResult Details(int id)
+        public ActionResult Details(int id, int? libraryId)
         {
             var service = CreateBookService();
-            return View(service.GetBookById(id));
+            return View(service.GetBookById(id, libraryId));
         }
 
         //GET: Create
@@ -58,7 +58,7 @@ namespace LiberLend.WebMVC.Controllers
         public ActionResult Edit(int id)
         {
             var service = CreateBookService();
-            var detail = service.GetBookById(id);
+            var detail = service.GetBookById(id, null);
             var model = new BookEdit
             {
                 BookId = detail.BookId,
@@ -99,7 +99,7 @@ namespace LiberLend.WebMVC.Controllers
         public ActionResult Delete(int id)
         {
             var service = CreateBookService();
-            return View(service.GetBookById(id));
+            return View(service.GetBookById(id, null));
         }
 
         //POST: Delete

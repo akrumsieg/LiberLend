@@ -103,7 +103,7 @@ namespace LiberLend.Services
                     ISBN = entity.Book.ISBN,
                     BookTitle = entity.Book.Title,
                     BookAuthor = entity.Book.AuthorFullNameFL(),
-                    ReservationPeriod = entity.StartTime.ToString() + " - " + entity.EndTime.ToString()
+                    ReservationPeriod = entity.StartTime.ToString("d") + " - " + entity.EndTime.ToString("d")
                 };
             }
         }

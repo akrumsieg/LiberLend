@@ -13,6 +13,8 @@ namespace LiberLend.Models.BookModels
 
         public string ApplicationUserId { get; set; }
 
+        public bool UserIsMember { get; set; }
+
         public string ISBN { get; set; }
 
         public string Title { get; set; }

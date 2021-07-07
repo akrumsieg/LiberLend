@@ -78,10 +78,14 @@
         <text> | </text>
         <a href="#" onclick="history.go(-1);">Back</a>
     }
-    else
+    else if (Model.UserIsMember)
     {
         @Html.ActionLink("Reserve", "../Reservation/Create", new { id = Model.BookId });
         <text> | </text>
-    <a href="#" onclick="history.go(-1);">Back</a>
+        <a href="#" onclick="history.go(-1);">Back</a>
+    }
+    else
+    {
+        <a href="#" onclick="history.go(-1);">Back</a>
     }
 </p>
