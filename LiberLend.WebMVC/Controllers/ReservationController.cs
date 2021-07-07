@@ -120,10 +120,10 @@ namespace LiberLend.WebMVC.Controllers
             var service = CreateReservationService();
             if (service.DeleteReservation(id))
             {
-                TempData["SaveResult"] = "This membership was deleted.";
+                TempData["SaveResult"] = "This reservation was cancelled.";
                 return RedirectToAction("IndexAsBorrower");
             }
-            TempData["SaveResult"] = "Delete failed.";
+            TempData["SaveResult"] = "Cancellation failed.";
             return RedirectToAction("IndexAsBorrower");
         }
     }
