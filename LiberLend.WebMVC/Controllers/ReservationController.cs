@@ -48,9 +48,12 @@ namespace LiberLend.WebMVC.Controllers
         //GET: Create
         public ActionResult Create(int id)
         {
+            var service = CreateReservationService();
+            var reservedDates = service.GetReservedDatesForBookId(id);
             var model = new ReservationCreate
             {
-                BookId = id
+                BookId = id,
+                ReservedDates = reservedDates
             };
             return View(model);
         }

@@ -21,5 +21,7 @@ namespace LiberLend.Models.ReservationModels
         [Display(Name = "Reservation End")]
         //[DataType(DataType.Date)]
         public string EndTime { get; set; }
+
+        public List<string> ReservedDates { get; set; }
     }
 }

@@ -33,6 +33,30 @@ namespace LiberLend.Services
             }
         }
 
+        public List<string> GetReservedDatesForBookId(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Books.Single(b => b.BookId == id);
+                var reservedDates = new List<string>();
+                var startTimes = entity.Reservations.Select(r => r.StartTime).ToList();
+                var endTimes = entity.Reservations.Select(r => r.EndTime).ToList();
+                for (int i = 0; i < startTimes.Count(); i++)
+                {
+                    for (DateTimeOffset date = startTimes[i]; date <= endTimes[i]; date = date.AddDays(1))
+                    {
+                        string dateString = date.ToString("d");
+                        if (!Char.IsDigit(dateString[1]))
+                        {
+                            dateString = dateString.Insert(0, "0");
+                        }
+                        reservedDates.Add(dateString);
+                    }
+                }
+                return reservedDates;
+            }
+        }
+
         public IEnumerable<ReservationListItem> GetAllReservationsAsBorrower()
         {
             using (var ctx = new ApplicationDbContext())

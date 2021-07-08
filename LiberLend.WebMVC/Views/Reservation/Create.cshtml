@@ -31,8 +31,9 @@
         <input type="text" name="dates" value="" />
 
         @Html.HiddenFor(model => model.StartTime, new { @class = "StartTime" })
-        @Html.HiddenFor(model => model.EndTime, new { htmlAttributes = new { @class = "EndTime" } } )
-        
+        @Html.HiddenFor(model => model.EndTime, new { htmlAttributes = new { @class = "EndTime" } })
+        @Html.HiddenFor(model => model.ReservedDates)
+
         @*<div class="form-group">
                 @Html.LabelFor(model => model.StartTime, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -73,16 +74,23 @@
 <script>
     var reservationStart;
     var reservationEnd;
+    var reservedDates = @Html.Raw(Json.Encode(Model.ReservedDates));
+    console.log(reservedDates);
     $('input[name="dates"]').daterangepicker({
-        "maxSpan": {
+        maxSpan: {
             "days": 28
         },
-        "minDate": moment(),
-        "maxDate": moment().add({ months: 6 }),
-        "showCustomRangeLabel": false,
-        "alwaysShowCalendars": true,
-        "startDate": moment(),
-        "endDate": moment()
+        minDate: moment(),
+        maxDate: moment().add({ months: 6 }),
+        showCustomRangeLabel: false,
+        alwaysShowCalendars: true,
+        startDate: moment(),
+        endDate: moment(),
+        isInvalidDate: function (date) {
+            if (reservedDates.includes(date.format('MM/DD/YYYY'))) {
+                return true;
+            }
+    },
     }, function (start, end, label) {
         console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
         //startDate = start;
