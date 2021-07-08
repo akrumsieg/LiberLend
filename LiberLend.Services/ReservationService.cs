@@ -23,8 +23,8 @@ namespace LiberLend.Services
             {
                 ApplicationUserId = _userId,
                 BookId = model.BookId,
-                StartTime = model.StartTime,
-                EndTime = model.EndTime
+                StartTime = DateTime.Parse(model.StartTime),
+                EndTime = DateTime.Parse(model.EndTime)
             };
             using (var ctx = new ApplicationDbContext())
             {

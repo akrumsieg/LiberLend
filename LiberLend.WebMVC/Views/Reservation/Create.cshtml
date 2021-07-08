@@ -1,5 +1,10 @@
 ﻿@model LiberLend.Models.ReservationModels.ReservationCreate
 
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
 @{
     ViewBag.Title = "Create";
 }
@@ -22,26 +27,31 @@
                 @Html.ValidationMessageFor(model => model.BookId, "", new { @class = "text-danger" })
             </div>
         </div>
+        Reservation Period:
+        <input type="text" name="dates" value="" />
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.StartTime, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.StartTime, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.StartTime, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.StartTime, new { @class = "StartTime" })
+        @Html.HiddenFor(model => model.EndTime, new { htmlAttributes = new { @class = "EndTime" } } )
+        
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.StartTime, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.StartTime, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.StartTime, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.EndTime, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.EndTime, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.EndTime, "", new { @class = "text-danger" })
-            </div>
-        </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.EndTime, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.EndTime, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.EndTime, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-default" id="createButton" />
             </div>
         </div>
     </div>
@@ -50,3 +60,82 @@
 <div>
     @Html.ActionLink("Back to List", "IndexAsBorrower")
 </div>
+
+@*<script>
+        $('input[name="dates"]').daterangepicker({
+            autoUpdateInput: false,
+            locale: {
+                cancelLabel: 'Clear'
+            }
+        });
+    </script>*@
+
+<script>
+    var reservationStart;
+    var reservationEnd;
+    $('input[name="dates"]').daterangepicker({
+        "maxSpan": {
+            "days": 28
+        },
+        "minDate": moment(),
+        "maxDate": moment().add({ months: 6 }),
+        "showCustomRangeLabel": false,
+        "alwaysShowCalendars": true,
+        "startDate": moment(),
+        "endDate": moment()
+    }, function (start, end, label) {
+        console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+        //startDate = start;
+        //endDate = end;
+            //console.log(start.format('MM/DD/YYYY'), end.format('MM/DD/YYYY'));
+            //document.getElementById('StartTime') = start;
+            //document.getElementById('EndTime') = end;
+    },
+    );
+    $('#createButton').click(function () {
+        console.log(reservationStart, reservationEnd);
+        document.getElementById('StartTime').value = reservationStart;
+        document.getElementById('EndTime').value = reservationEnd;
+        //document.querySelector('StartTime') = start;
+        //document.querySelector('EndTime') = end;
+    })
+
+    //$('#createButton').click(function () {
+    //    console.log(startDate.format('YYYY-MM-DD') + ' - ' + endDate.format('YYYY-MM-DD'));
+    //})
+
+    $('input[name="dates"]').on('apply.daterangepicker', function (ev, picker) {
+        $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+        reservationStart = picker.startDate.format('MM/DD/YYYY');
+        reservationEnd = picker.endDate.format('MM/DD/YYYY');
+        console.log(reservationStart, reservationEnd);
+        //startDate = picker.startDate.format('MM/DD/YYYY');
+        //endDate = end.format('YYYY-MM-DD');
+    });
+
+    $('input[name="dates"]').on('cancel.daterangepicker', function (ev, picker) {
+        $(this).val('');
+    });
+</script>
+
+@*<script type="text/javascript">
+
+        $(function () {
+
+            $('input[name="dates"]').daterangepicker({
+                autoUpdateInput: false,
+                locale: {
+                    cancelLabel: 'Clear'
+                }
+            });
+
+            $('input[name="dates"]').on('apply.daterangepicker', function (ev, picker) {
+                $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+            });
+
+            $('input[name="dates"]').on('cancel.daterangepicker', function (ev, picker) {
+                $(this).val('');
+            });
+
+        });
+    </script>*@
