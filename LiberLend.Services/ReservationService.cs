@@ -45,12 +45,7 @@ namespace LiberLend.Services
                 {
                     for (DateTimeOffset date = startTimes[i]; date <= endTimes[i]; date = date.AddDays(1))
                     {
-                        string dateString = date.ToString("d");
-                        if (!Char.IsDigit(dateString[1]))
-                        {
-                            dateString = dateString.Insert(0, "0");
-                        }
-                        reservedDates.Add(dateString);
+                        reservedDates.Add(date.ToString("MM'/'dd'/'yyyy"));
                     }
                 }
                 return reservedDates;

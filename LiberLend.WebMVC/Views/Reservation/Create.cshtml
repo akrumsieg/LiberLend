@@ -28,7 +28,7 @@
             </div>
         </div>
         Reservation Period:
-        <input type="text" name="dates" value="" />
+        <input type="text" name="dates" value="" readonly />
 
         @Html.HiddenFor(model => model.StartTime, new { @class = "StartTime" })
         @Html.HiddenFor(model => model.EndTime, new { htmlAttributes = new { @class = "EndTime" } })
@@ -75,7 +75,13 @@
     var reservationStart;
     var reservationEnd;
     var reservedDates = @Html.Raw(Json.Encode(Model.ReservedDates));
-    console.log(reservedDates);
+    function nextAvailDate() {
+        var nad = moment();
+        while (reservedDates.includes(nad.format('MM/DD/YYYY'))) {
+            nad = nad.add({ days: 1 });
+        }
+        return nad;
+    };
     $('input[name="dates"]').daterangepicker({
         maxSpan: {
             "days": 28
@@ -84,8 +90,8 @@
         maxDate: moment().add({ months: 6 }),
         showCustomRangeLabel: false,
         alwaysShowCalendars: true,
-        startDate: moment(),
-        endDate: moment(),
+        startDate: nextAvailDate(),
+        endDate: nextAvailDate(),
         isInvalidDate: function (date) {
             if (reservedDates.includes(date.format('MM/DD/YYYY'))) {
                 return true;
