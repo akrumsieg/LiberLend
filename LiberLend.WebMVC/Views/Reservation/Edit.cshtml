@@ -1,5 +1,11 @@
 ﻿@model LiberLend.Models.ReservationModels.ReservationEdit
 
+@*source files for daterangepicker*@
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
 @{
     ViewBag.Title = "Edit";
 }
@@ -9,31 +15,24 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Edit Reservation</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        
-        <div class="form-group">
-            @Html.LabelFor(model => model.StartTime, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.StartTime, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.StartTime, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.EndTime, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.EndTime, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.EndTime, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        Reservation Period:
+        <input type="text" name="dates" value="" readonly />
+        @Html.HiddenFor(model => model.ReservationId)
+
+        @Html.HiddenFor(model => model.StartTime)
+        @Html.HiddenFor(model => model.EndTime)
+        @Html.HiddenFor(model => model.ReservedDates)
+        @Html.HiddenFor(model => model.BlackoutDates)
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-default" id="saveButton" />
             </div>
         </div>
     </div>
@@ -42,3 +41,77 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+<script>
+    //assign previously selected dates to variables
+    var reservationStart = document.getElementById('StartTime').value;
+    var reservationEnd = document.getElementById('EndTime').value;
+    //pass in arrays of date strings from model
+    var reservedDates = @Html.Raw(Json.Encode(Model.ReservedDates));
+    var blackoutDates = @Html.Raw(Json.Encode(Model.BlackoutDates));
+    //finds the next available date if today is already reserved
+    function nextAvailDate() {
+        var nad = moment();
+        while (reservedDates.includes(nad.format('MM/DD/YYYY'))) {
+            nad = nad.add({ days: 1 });
+        }
+        return nad;
+    };
+    $('input[name="dates"]').daterangepicker({
+        maxSpan: {
+            days: 28
+        },
+        //allow editing up to four weeks prior so that a reservation can be shortened if it already started
+        minDate: moment().add({ days: -28 }),
+        maxDate: moment().add({ months: 6 }),
+        showCustomRangeLabel: false,
+        alwaysShowCalendars: true,
+        //load datepicker with previously selected dates
+        startDate: reservationStart,
+        endDate: reservationEnd,
+        //invalidate any previously reserved dates not including the reservation currently being edited (array defined in controller)
+        isInvalidDate: function (date) {
+            if (blackoutDates.includes(date.format('MM/DD/YYYY'))) {
+                return true;
+            }
+    },
+    }, function (start, end, label) {
+        console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+    },
+    );
+
+    //when clicking apply: Assign the reservationStart/End variables with correctly formatted string.
+    $('input[name="dates"]').on('apply.daterangepicker', function (ev, picker) {
+        $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+        reservationStart = picker.startDate.format('MM/DD/YYYY');
+        reservationEnd = picker.endDate.format('MM/DD/YYYY');
+        //prevent user from submitting a date range that includes an invalid date
+        let selectedDates = [];
+        for (let date = picker.startDate; date < picker.endDate; date.add(1, 'days')) {
+            selectedDates.push(date.format('MM/DD/YYYY'));
+        }
+        //gather matching dates (if any) of selectedDates[] and reservedDates[]
+        const dateConflicts = selectedDates.filter(date => blackoutDates.includes(date));
+        if (dateConflicts.length > 0) {
+            alert('Date selection includes invalid date!');
+            $(this).val('Invalid Selection!');
+            //disable submit button if there are conflicts
+            document.getElementById('saveButton').disabled = true;
+        }
+        else {
+            //make sure submit button is enable if there are no conflicts
+            document.getElementById('saveButton').disabled = false;
+        }
+    });
+
+    //clear text box when 'cancel' is clicked
+    $('input[name="dates"]').on('cancel.daterangepicker', function (ev, picker) {
+        $(this).val('');
+    });
+
+    //reassign model properties with date selection when submitted
+    $('#saveButton').click(function () {
+        document.getElementById('StartTime').value = reservationStart;
+        document.getElementById('EndTime').value = reservationEnd;
+    })
+</script>

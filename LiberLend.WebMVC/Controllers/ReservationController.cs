@@ -79,9 +79,14 @@ namespace LiberLend.WebMVC.Controllers
         {
             var service = CreateReservationService();
             var detail = service.GetReservationById(id);
+            var reservedDates = service.GetReservedDatesForBookId(detail.BookId);
             var model = new ReservationEdit
             {
-                ReservationId = detail.ReservationId
+                ReservationId = detail.ReservationId,
+                StartTime = detail.StartTime,
+                EndTime = detail.EndTime,
+                ReservedDates = reservedDates,
+                BlackoutDates = reservedDates.Except(detail.CurrentReservationDates).ToList()
             };
             return View(model);
         }
@@ -103,7 +108,7 @@ namespace LiberLend.WebMVC.Controllers
                 TempData["SaveResult"] = "Update successful!";
                 return RedirectToAction("Index");
             }
-            ModelState.AddModelError("", "Update failed.");
+            ModelState.AddModelError("", "Update failed. Did you change the dates?");
             return View(model);
         }
 

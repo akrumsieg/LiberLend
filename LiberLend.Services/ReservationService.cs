@@ -43,7 +43,7 @@ namespace LiberLend.Services
                 var endTimes = entity.Reservations.Select(r => r.EndTime).ToList();
                 for (int i = 0; i < startTimes.Count(); i++)
                 {
-                    for (DateTimeOffset date = startTimes[i]; date <= endTimes[i]; date = date.AddDays(1))
+                    for (DateTimeOffset date = startTimes[i]; date < endTimes[i]; date = date.AddDays(1))
                     {
                         reservedDates.Add(date.ToString("MM'/'dd'/'yyyy"));
                     }
@@ -109,6 +109,12 @@ namespace LiberLend.Services
             using (var ctx = new ApplicationDbContext())
             {
                 var entity = ctx.Reservations.Single(r => r.ReservationId == id);
+                var currentReservationDates = new List<string>();
+                for (DateTimeOffset date = entity.StartTime; date < entity.EndTime; date = date.AddDays(1))
+                {
+                    currentReservationDates.Add(date.ToString("MM'/'dd'/'yyyy"));
+                };
+
                 return new ReservationDetails
                 {
                     ReservationId = entity.ReservationId,
@@ -122,8 +128,11 @@ namespace LiberLend.Services
                     ISBN = entity.Book.ISBN,
                     BookTitle = entity.Book.Title,
                     BookAuthor = entity.Book.AuthorFullNameFL(),
-                    ReservationPeriod = entity.StartTime.ToString("d") + " - " + entity.EndTime.ToString("d")
-                };
+                    ReservationPeriod = entity.StartTime.ToString("MM'/'dd'/'yyyy") + " - " + entity.EndTime.ToString("MM'/'dd'/'yyyy"),
+                    StartTime = entity.StartTime.ToString("MM'/'dd'/'yyyy"),
+                    EndTime = entity.EndTime.ToString("MM'/'dd'/'yyyy"),
+                    CurrentReservationDates = currentReservationDates
+            };
             }
         }
 
@@ -133,8 +142,8 @@ namespace LiberLend.Services
             using (var ctx = new ApplicationDbContext())
             {
                 var entity = ctx.Reservations.Single(r => r.ReservationId == model.ReservationId && (r.ApplicationUserId == _userId || r.Book.ApplicationUserId == _userId));
-                entity.StartTime = model.StartTime;
-                entity.EndTime = model.EndTime;
+                entity.StartTime = DateTime.Parse(model.StartTime);
+                entity.EndTime = DateTime.Parse(model.EndTime);
                 return ctx.SaveChanges() == 1;
             }
         }

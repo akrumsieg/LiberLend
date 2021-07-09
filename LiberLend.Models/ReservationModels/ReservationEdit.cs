@@ -13,12 +13,14 @@ namespace LiberLend.Models.ReservationModels
 
         [Required]
         [Display(Name = "Reservation Start")]
-        [DataType(DataType.Date)]
-        public DateTimeOffset StartTime { get; set; }
+        public string StartTime { get; set; }
 
         [Required]
         [Display(Name = "Reservation End")]
-        [DataType(DataType.Date)]
-        public DateTimeOffset EndTime { get; set; }
+        public string EndTime { get; set; }
+
+        public List<string> ReservedDates { get; set; }
+
+        public List<string> BlackoutDates { get; set; }
     }
 }

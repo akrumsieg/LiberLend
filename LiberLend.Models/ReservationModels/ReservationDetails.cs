@@ -43,7 +43,10 @@ namespace LiberLend.Models.ReservationModels
         [Display(Name = "Reservation Period")]
         public string ReservationPeriod { get; set; }
 
+        public string StartTime { get; set; }
 
+        public string EndTime { get; set; }
 
+        public List<string> CurrentReservationDates { get; set; } = new List<string>();
     }
 }
