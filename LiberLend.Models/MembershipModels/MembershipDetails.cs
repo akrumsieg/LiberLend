@@ -11,8 +11,10 @@ namespace LiberLend.Models.MembershipModels
     {
         public int MembershipId { get; set; }
 
+        [Display(Name = "Library Name")]
         public string LibraryName { get; set; }
 
+        [Display(Name = "Member Name")]
         public string ApplicationUserName { get; set; }
 
         [Display(Name = "Authorized Membership")]

@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<LiberLend.Models.MembershipModels.MembershipListItem>
 
 @{
-    ViewBag.Title = "LibraryMembers";
+    ViewBag.Title = "Library Members";
 }
 
-<h2>Members of Library</h2>
+<h2>Library Members</h2>
 
 <table class="table">
     <tr>
@@ -12,8 +12,8 @@
             @Html.DisplayNameFor(model => model.ApplicationUserName)
         </th>
         @*<th>
-            @Html.DisplayNameFor(model => model.IsAuthorized)
-        </th>*@
+                @Html.DisplayNameFor(model => model.IsAuthorized)
+            </th>*@
         <th></th>
     </tr>
 
@@ -24,10 +24,10 @@
                 @Html.DisplayFor(modelItem => item.ApplicationUserName)
             </td>
             @*<td>
-                @Html.DisplayFor(modelItem => item.IsAuthorized)
-            </td>*@
+                    @Html.DisplayFor(modelItem => item.IsAuthorized)
+                </td>*@
         </tr>
     }
-    @Html.ActionLink("Back to Libraries", "../Library/Index")
 
 </table>
+@Html.ActionLink("Back to Libraries", "../Library/Index")
