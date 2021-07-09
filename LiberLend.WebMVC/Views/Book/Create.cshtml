@@ -1,10 +1,10 @@
 ﻿@model LiberLend.Models.BookModels.BookCreate
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Add A Book";
 }
 
-<h2>Create</h2>
+<h2>Add A Book</h2>
 
 
 @using (Html.BeginForm()) 
@@ -12,7 +12,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>BookCreate</h4>
+        <h4>Add to your bookshelf! (* denotes required field)</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -88,7 +88,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to My Bookshelf", "Index")
 </div>
 
 @section Scripts {

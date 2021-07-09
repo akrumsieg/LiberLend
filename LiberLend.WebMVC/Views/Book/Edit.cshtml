@@ -1,10 +1,10 @@
 ﻿@model LiberLend.Models.BookModels.BookEdit
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Edit My Book";
 }
 
-<h2>Edit</h2>
+<h2>Edit My Book</h2>
 
 
 @using (Html.BeginForm())
@@ -12,7 +12,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>BookEdit</h4>
+        <h4>Change the appropriate information and click 'Save'</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.BookId)
@@ -89,7 +89,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to My Bookshelf", "Index")
 </div>
 
 @section Scripts {

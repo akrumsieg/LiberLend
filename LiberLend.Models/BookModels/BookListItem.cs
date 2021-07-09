@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,7 @@ namespace LiberLend.Models.BookModels
 
         public string Author { get; set; }
 
+        [Display(Name = "Available")]
         public bool IsAvailable { get; set; }
     }
 }

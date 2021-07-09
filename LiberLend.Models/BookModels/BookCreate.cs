@@ -14,14 +14,15 @@ namespace LiberLend.Models.BookModels
         public string ISBN { get; set; }
 
         [Required]
+        [Display(Name = "Title*")]
         public string Title { get; set; }
 
         [Required]
-        [Display(Name = "Author's First Name")]
+        [Display(Name = "Author's First Name*")]
         public string AuthorFirstName { get; set; }
 
         [Required]
-        [Display(Name = "Author's Last Name")]
+        [Display(Name = "Author's Last Name*")]
         public string AuthorLastName { get; set; }
 
         public string Publisher { get; set; }

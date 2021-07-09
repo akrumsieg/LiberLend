@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<LiberLend.Models.BookModels.BookListItem>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "My Bookshelf";
 }
 
-<h2>My Library</h2>
+<h2>My Bookshelf</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Add a book", "Create")
 </p>
 @if (TempData.ContainsKey("SaveResult"))
 {

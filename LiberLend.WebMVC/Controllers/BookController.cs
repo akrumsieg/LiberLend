@@ -47,7 +47,7 @@ namespace LiberLend.WebMVC.Controllers
             var service = CreateBookService();
             if (service.CreateBook(model))
             {
-                TempData["SaveResult"] = "Your book was entered in your personal library.";
+                TempData["SaveResult"] = "You put a book on your bookshelf!";
                 return RedirectToAction("Index");
             }
             ModelState.AddModelError("", "Your book could not be added.");
@@ -91,7 +91,7 @@ namespace LiberLend.WebMVC.Controllers
                 TempData["SaveResult"] = "Your book was updated.";
                 return RedirectToAction("Index");
             }
-            ModelState.AddModelError("", "Your book could not be updated.");
+            ModelState.AddModelError("", "Your book could not be updated. Did you change any information?");
             return View(model);
         }
 
