@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<LiberLend.Models.ReservationModels.ReservationListItem>
 
 @{
-    ViewBag.Title = "IndexAsOwner";
+    ViewBag.Title = "Incoming Reservations";
 }
 
 <h2>Incoming Reservations</h2>
@@ -14,6 +14,9 @@
         @TempData["SaveResult"]
     </div>
 }
+<hr />
+<h4>Get in touch with the borrower by clicking on the reservation Details.</h4>
+<h4>As the book owner, you can adjust the reservation period on incoming reservations by clicking on Edit.</h4>
 <table class="table">
     <tr>
         <th>

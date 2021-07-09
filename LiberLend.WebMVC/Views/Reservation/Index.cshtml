@@ -1,13 +1,13 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Reservations";
 }
 
 <h2>
-    @Html.ActionLink("View Incoming Reservations", "IndexAsOwner");
+    @Html.ActionLink("Incoming Reservations", "IndexAsOwner")
 </h2>
 <h2>
-    @Html.ActionLink("View Outgoing Reservations", "IndexAsBorrower");
+    @Html.ActionLink("Outgoing Reservations", "IndexAsBorrower")
 </h2>
 
 @if (TempData.ContainsKey("SaveResult"))

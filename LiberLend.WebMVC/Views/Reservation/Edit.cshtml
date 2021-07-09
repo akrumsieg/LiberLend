@@ -17,11 +17,10 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Edit Reservation</h4>
         <hr />
+        <h4>The reservation period can be up to 4 weeks long.</h4>
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        Reservation Period:
         <input type="text" name="dates" value="" readonly />
         @Html.HiddenFor(model => model.ReservationId)
 
@@ -31,7 +30,7 @@
         @Html.HiddenFor(model => model.BlackoutDates)
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
+            <div class="col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" id="saveButton" />
             </div>
         </div>
@@ -39,7 +38,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to Reservations", "Index")
 </div>
 
 <script>

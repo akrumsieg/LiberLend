@@ -6,11 +6,11 @@
 }
 
 <h2>Community Libraries</h2>
-
 <p>
     @Html.ActionLink("Create a community library", "Create") |
     @Html.ActionLink("Find other community Libraries", "BrowseIndex")
 </p>
+<h4>You are a member of these libraries:</h4>
 @if (TempData.ContainsKey("SaveResult"))
 {
     <div class="alert alert-success fade in" role="alert">
@@ -66,3 +66,5 @@
     }
 
 </table>
+<hr />
+
