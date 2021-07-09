@@ -98,7 +98,7 @@ namespace LiberLend.WebMVC.Controllers
                 TempData["SaveResult"] = "Update successful!";
                 return RedirectToAction("Index");
             }
-            ModelState.AddModelError("", "Update failed.");
+            ModelState.AddModelError("", "Update failed. Did you change any information?");
             return View(model);
         }
 
