@@ -10,7 +10,7 @@
     ViewBag.Title = "Make Reservation";
 }
 
-<h2>Make Reservation</h2>
+<h2 class="liberlend-text">Make Reservation</h2>
 
 @using (Html.BeginForm())
 {
@@ -106,6 +106,7 @@
     //clear text box when 'cancel' is clicked
     $('input[name="dates"]').on('cancel.daterangepicker', function (ev, picker) {
         $(this).val('');
+        document.getElementById('createButton').disabled = true;
     });
 
     //reassign model properties with date selection when submitted
