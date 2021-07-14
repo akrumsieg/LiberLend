@@ -23,7 +23,7 @@ namespace LiberLend.WebMVC
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap-super.min.css",
+                      "~/Content/bootstrap-sandstone.min.css",
                       "~/Content/site.css"));
         }
     }
