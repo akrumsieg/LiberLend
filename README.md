@@ -1,6 +1,9 @@
 # LiberLend
 
-## [Live Deployment](https://liberlend.azurewebsites.net/)
+## Screenshots
+![Alt text](./screenshots/image.png)
+
+![Alt text](./screenshots/image-1.png)
 
 ## LiberLend Mission
 LiberLend’s mission is to maximize the use of an individual book by allowing communities to share their books among their members in an organized manner.
